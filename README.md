@@ -11,7 +11,7 @@
 
 ## 🧠 Run App
 
-- Run `yarn dev` in your terminal.
+- Run `yarn start` in your terminal.
 
 - Open your web browser and go to `localhost:3000` to start using GitHub Runners! 🚀
 
