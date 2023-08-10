@@ -3,11 +3,21 @@ import React from "react";
 import {
   Title,
   Button,
+  Text,
+  Badge,
+  Grid,
+  Table, 
+  TableHead, 
+  TableRow, 
+  TableHeaderCell, 
+  TableBody,
+  TableCell,
 } from "@tremor/react";
 
 type ModalType = {
   showModal: boolean;
   setShowModal: Function;
+  selectedRunner: any;
 }
 
 export default function Modal(props: ModalType) {
@@ -35,13 +45,58 @@ export default function Modal(props: ModalType) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    I always felt like I could do anything. That’s the main
-                    thing people are controlled by! Thoughts- their perception
-                    of themselves! They're slowed down by their perception of
-                    themselves. If you're taught you can’t do anything, you
-                    won’t do anything. I was taught I could do everything.
-                  </p>
+                  <Grid numColsLg={2} numColsMd={2} className="gap-x-32 gap-y-4">
+                    <div>
+                      <Text>Name: </Text>
+                      <Title>{props.selectedRunner.name}</Title>
+                    </div>
+                    <div>
+                      <Text>Busy: </Text>
+                      <Title>
+                        <Badge size='lg' color={props.selectedRunner.busy ? "emerald": "rose"}>
+                          {props.selectedRunner.busy ? 'Yes': 'No'}
+                        </Badge>
+                      </Title>
+                    </div>
+                    <div>
+                      <Text>Repository: </Text>
+                      <Title>{props.selectedRunner.repository}</Title>
+                    </div>
+                    <div>
+                      <Text>Organization: </Text>
+                      <Title>{props.selectedRunner.organization}</Title>
+                    </div>
+                    <div>
+                      <Text>OS: </Text>
+                      <Title>{props.selectedRunner.os}</Title>
+                    </div>
+                    <div>
+                      <Text>Status: </Text>
+                      <Title>{props.selectedRunner.status}</Title>
+                    </div>
+                  </Grid>
+
+                  <Text className="mt-8">Labels: </Text>
+                  <Table className="w-full">
+                    <TableHead>
+                      <TableRow>
+                        <TableHeaderCell>No</TableHeaderCell>
+                        <TableHeaderCell>Name</TableHeaderCell>
+                        <TableHeaderCell>Type</TableHeaderCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {props.selectedRunner.labels.map((item: any, index: number) => (
+                        <TableRow key={item.id}>
+                          <TableCell>{item.id}</TableCell>
+                          <TableCell>{item.name}</TableCell>
+                          <TableCell>
+                            <Text>{item.type}</Text>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end py-6 px-8 border-t border-solid border-slate-200 rounded-b">
