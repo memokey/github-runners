@@ -13,6 +13,6 @@
 
 - Run `yarn dev` in your terminal.
 
-- Open your web browser and go to `localhost:3000` to start using Mindgem! 🚀
+- Open your web browser and go to `localhost:3000` to start using GitHub Runners! 🚀
 
-Enjoy exploring Mindgem! 😄
+Enjoy exploring it! 😄
