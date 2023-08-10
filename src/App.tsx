@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { data } from './data';
 import './styles/App.css';
 import { 
   Card, 
@@ -24,7 +23,6 @@ import Modal from './Modal';
 import ACTIONS from './config/action';
 import { socket } from './utils/socket';
 import { usePagination } from './hooks/usePagination';
-import { toast } from "react-hot-toast";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -82,8 +80,6 @@ function App() {
               setRunnerCount(runner_count);
               setBmxRunnerCount(bmx_runner_count);
               setRunners(runners);
-              console.log(runners);
-              // toast.success('The positions are updated.');
             }
         );
         (window as any).socket.emit(ACTIONS.FETCH_GITHUB_RUNNERS, {});
